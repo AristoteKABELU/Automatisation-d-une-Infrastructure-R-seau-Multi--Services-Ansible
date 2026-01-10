@@ -1,0 +1,20 @@
+- hosts: switches
+  gather_facts: false
+  vars:
+    vlan_dict:
+      vlan_10:
+        id: 10
+        name: "Data"
+      vlan_20:
+        id: 20
+        name: "Voice"
+  tasks:
+    - name: Override device configuration of all VLANs with provided configuration
+      cisco.ios.ios_vlans:
+        config:
+          - name: "{{ item.value.name }}"
+            vlan_id: "{{ item.value.id }}"
+            shutdown: disabled
+        state: overridden
+      loop: "{{ vlan_dict | dict2items }}"
+
