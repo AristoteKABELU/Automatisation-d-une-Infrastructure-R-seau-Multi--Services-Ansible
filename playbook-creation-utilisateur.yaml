@@ -1,0 +1,11 @@
+- hosts: routeurs
+  gather_facts: false
+  tasks:
+  - name: Cree un utilisateur avec mot de passe haché
+    cisco.ios.ios_user:
+      name: aristote
+      hashed_password:
+        type: 15
+        value: "aristote"
+      sshkey: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      state: present
