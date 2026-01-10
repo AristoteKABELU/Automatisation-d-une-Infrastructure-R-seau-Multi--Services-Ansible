@@ -1,0 +1,9 @@
+- hosts: routeurs
+  gather_facts: false
+  tasks:
+    - name: backup ios config
+      cisco.ios.ios_config:
+        backup: yes
+        backup_options:
+          filename: "running-config-{{ inventory_hostname }}.cfg"
+          dir_path: "./running-config-backups"

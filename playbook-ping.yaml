@@ -1,0 +1,7 @@
+- hosts: routeurs
+  gather_facts: false
+  tasks:
+    - name: Ping tous les routeurs
+      ansible.builtin.ping:
+
+

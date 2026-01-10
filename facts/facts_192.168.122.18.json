@@ -1,0 +1,17 @@
+{
+    "ansible_net_api": "cliconf",
+    "ansible_net_gather_network_resources": [],
+    "ansible_net_gather_subset": [
+        "default"
+    ],
+    "ansible_net_hostname": "R1",
+    "ansible_net_image": "tftp://255.255.255.255/unknown",
+    "ansible_net_iostype": "IOS",
+    "ansible_net_model": "7206VXR",
+    "ansible_net_operatingmode": "autonomous",
+    "ansible_net_python_version": "3.12.3",
+    "ansible_net_serialnum": "4279256517",
+    "ansible_net_system": "ios",
+    "ansible_net_version": "15.2(4)M7",
+    "ansible_network_resources": {}
+}
