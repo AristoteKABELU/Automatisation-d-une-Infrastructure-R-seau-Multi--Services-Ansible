@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: false
+  tasks:  
+  - name: Ecrire les facts reseau dans un fichier
+    cisco.ios.ios_facts:
+      gather_subset:
+      - "!all"
+    register: ios_facts
+
+  - name: Configurer le message du jour
+    cisco.ios.ios_config:
+      src: ./templates/MOTD.j2
+      backup: yes
+      save_when: modified
