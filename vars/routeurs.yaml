@@ -1,0 +1,12 @@
+routeurs:
+  r1:
+    int: "GigabitEthernet1/0"
+    ip: "192.168.100.1"
+
+  r2:
+    int: "GigabitEthernet1/0"
+    ip: "192.168.100.2"
+
+  r3:
+    int: "GigabitEthernet1/0"
+    ip: "192.168.100.3"

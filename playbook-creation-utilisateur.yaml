@@ -1,4 +1,4 @@
-- hosts: routeurs
+- hosts: all
   gather_facts: false
   tasks:
   - name: Cree un utilisateur avec mot de passe haché

@@ -1,0 +1,29 @@
+- hosts: routeurs
+  gather_facts: false
+  vars_files:
+    - vars/routeurs.yaml
+  tasks:
+    - name: Configurer l'address IP sur l'interface de R1
+      cisco.ios.ios_l3_interfaces:
+        config:
+          - name: "{{routeurs.r1.int}}"
+            ipv4:
+              - address: "{{routeurs.r1.ip}}/24"
+      when : inventory_hostname == '192.168.122.18'
+
+    - name: Afficher l'address IP sur l'interface de R2
+      cisco.ios.ios_l3_interfaces:
+        config:
+          - name: "{{routeurs.r2.int}}"
+            ipv4:
+              - address: "{{routeurs.r2.ip}}/24"
+      when : inventory_hostname == '192.168.122.176'
+
+
+    - name: Afficher l'address IP sur l'interface  de R3
+      cisco.ios.ios_l3_interfaces:
+        config:
+          - name: "{{routeurs.r3.int}}"
+            ipv4:
+              - address: "{{routeurs.r3.ip}}/24"
+      when : inventory_hostname == '192.168.122.246'

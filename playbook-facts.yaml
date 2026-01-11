@@ -1,4 +1,4 @@
-- hosts: routeurs
+- hosts: all
   gather_facts: false
   tasks:  
   - name: Ecrire les facts reseau dans un fichier
