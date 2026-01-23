@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Audit et Conformite de snmp
+    cisco.ios.ios_command:
+      commands: show run | s snmp
+    register: snmp_config
+
+  - name: Affiche un message d'erreur si la configuration n'y est pas
+    ansible.builtin.fail:
+      msg: "la configuration de SNMP est manquante"
+    when: snmp_config.stdout[0] == ""
+
+
