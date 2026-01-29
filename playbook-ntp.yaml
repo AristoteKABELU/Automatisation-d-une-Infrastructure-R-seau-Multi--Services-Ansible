@@ -1,1 +1,9 @@
 
+- name: Déploiement NTP
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Configurer NTP
+      cisco.ios.ios_ntp:
+        servers: "0.fr.pool.ntp.org"
