@@ -5,5 +5,8 @@
 
   tasks:
     - name: Configurer NTP
-      cisco.ios.ios_ntp:
-        servers: "0.fr.pool.ntp.org"
+      cisco.ios.ios_ntp_global:
+        config:
+          servers:
+          - server: 0.fr.pool.ntp.org"
+      
