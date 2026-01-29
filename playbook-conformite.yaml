@@ -1,14 +1,14 @@
-- hosts: all
-  gather_facts: false
+- name: Audit SNMP
+  hosts: all
+  gather_facts: no
+
   tasks:
-  - name: Audit et Conformite de snmp
-    cisco.ios.ios_command:
-      commands: show run | s snmp
-    register: snmp_config
+    - name: Vérifier si SNMP est configuré
+      cisco.ios.ios_facts:
+        gather_subset: config
+      register: config
 
-  - name: Affiche un message d'erreur si la configuration n'y est pas
-    ansible.builtin.fail:
-      msg: "la configuration de SNMP est manquante"
-    when: snmp_config.stdout[0] == ""
-
-
+    - name: Échec si SNMP absent
+      fail:
+        msg: "SNMP n'est pas configuré sur {{ inventory_hostname }}"
+      when: "'snmp-server' not in config.ansible_facts.ansible_net_config"
