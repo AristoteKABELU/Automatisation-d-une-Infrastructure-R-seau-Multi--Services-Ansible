@@ -4,9 +4,12 @@
   - name: Ecrire les facts reseau dans un fichier
     cisco.ios.ios_facts:
       gather_subset:
-      - "!all"
+      - "hardware"
     register: ios_facts
   - name: Sauvegarder les facts reseau dans un fichier JSON
     ansible.builtin.copy:
-      content: "{{ ios_facts.ansible_facts| to_nice_json }}"
-      dest: "./facts/facts_{{ inventory_hostname }}.json"
+      content: |
+        Hostname : {{ inventory_hostname }}
+        Version  : {{ ios_facts.ansible_facts.ansible_net_version }}
+        Serial   : {{ ios_facts.ansible_facts.ansible_net_serialnum }}
+      dest: "./facts/facts_{{ inventory_hostname }}.txt"
